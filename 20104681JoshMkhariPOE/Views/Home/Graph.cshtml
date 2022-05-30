@@ -1,0 +1,230 @@
+﻿@model _20104681JoshMkhariPOE.Models.GraphViewData
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Theme/assets/img/favicon.png" rel="icon">
+    <link href="~/Theme/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Theme/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Theme/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: NiceAdmin - v2.1.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a class="logo d-flex align-items-center">
+                <span class="d-none d-lg-block">20104681PROG6212</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@Model.userName</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>@Model.userName</h6>
+                            <span>Student</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Login", "Home" )">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Modules</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("AddModule", "Home" )">
+                            <i class="bi bi-circle"></i><span>Add Module</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ViewModules", "Home" )">
+                            <i class="bi bi-circle"></i><span>View Modules</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Calendar</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("ViewStudy", "Home" )">
+                            <i class="bi bi-circle"></i><span>View Planned Study Sessions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Graph", "Home" )">
+                            <i class="bi bi-circle"></i><span>Graph</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Forms Nav -->
+
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Graph</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Calendar</a></li>
+                    <li class="breadcrumb-item active">Graph</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="row">
+                    <!-- Reports -->
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                            <!-- Line Chart -->
+                            <div id="myChart"></div>
+
+                            <script>
+                                var obj = @Html.Raw(Json.Encode(Model.data));
+                                var myDates = @Html.Raw(Json.Encode(Model.dates));
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#myChart"), {
+                                                series: obj,
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d', '#6d32a8'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                xaxis: {
+                                                    type: 'text',
+                                                    categories: myDates
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                            </script>
+                            <!-- End Line Chart -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </section>
+
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Theme/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Theme/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Theme/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/Theme/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/Theme/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/Theme/assets/vendor/chart.js/chart.min.js"></script>
+    <script src="~/Theme/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/Theme/assets/vendor/echarts/echarts.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Theme/assets/js/main.js"></script>
+
+</body>
+
+</html>
